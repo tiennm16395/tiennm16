@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+    
+        stage('Deploy') {
+            steps {
+                sh'''
+                    docker build -t webtest .
+                    docker run -d -p 3000:3000 webtest
+                '''
+            }
+        }
+    }
+}
